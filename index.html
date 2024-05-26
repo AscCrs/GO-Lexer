@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="editor-container">
+    <!-- <div class="sidebar">
+      <input type="file" id="import-btn">
+    </div> -->
+    <div class="editor">
+      <pre id="code" contenteditable="true">
+package main
+
+import "fmt"
+
+/* This is a multi-line comment
+   It spans multiple lines */
+// This is single-line comment    
+
+func main() {
+  // This is a single-line comment
+  var x int = 10
+  if x > 5 {
+    fmt.Println("x is greater than 5")
+  } else {
+    fmt.Println("x is not greater than 5")
+  }
+}
+      </pre>
+      <button onclick="getText()" id="run-btn">Run</button>
+    </div>
+  </div>
+  <script>
+    function getText() {
+      const preElement = document.getElementById("code");
+      const content = preElement.innerText;
+      console.log(lex(content));
+
+      // // Iterar sobre las líneas y pasarlas al analizador léxico
+      // lines.forEach((line) => {
+      //   try {
+      //     console.log(lex(line)); // Pasar la línea al analizador léxico y mostrar los tokens
+      //   } catch (error) {
+      //     console.error(error.message);
+      //   }
+      // });
+    }
+  </script>
+  <script src="lex.js"></script>
+</body>
+</html>
